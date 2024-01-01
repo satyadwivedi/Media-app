@@ -1,0 +1,1 @@
+using sap.satya.media.MediaServer as service from '../../srv/media-service';

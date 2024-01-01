@@ -1,0 +1,66 @@
+### Requires REST Client for VS Code
+### https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+###
+@protocol = http
+@host = localhost
+@port = 4006/odata/v4
+### Read Pictures
+GET {{protocol}}://{{host}}:{{port}}/media-server/Media
+Authorization: Basic admin:
+
+### Create Picture with mediatype
+POST {{protocol}}://{{host}}:{{port}}/media-server/Media
+Authorization: Basic admin:
+Accept: application/json
+Content-Type: application/json
+
+{   
+  "id": 1,
+  "mediaType": "image/png" 
+}
+
+### Upload Binary PNG
+PUT {{protocol}}://{{host}}:{{port}}/media-server/Media(1)/content
+Authorization: Basic admin:
+Content-Type: image/png
+
+< ./tempFiles/Test.png
+
+### Read Binary
+GET {{protocol}}://{{host}}:{{port}}/media-server/Media(1)/content
+Authorization: Basic admin:
+
+### Delete Image
+DELETE {{protocol}}://{{host}}:{{port}}/media-server/Media(1)
+Authorization: Basic admin:
+
+###
+POST http://localhost:4004/odata/v2/media-server/Media
+Accept: application/json
+Content-Type: application/json
+
+{ 
+  "id": 2,
+  "fileName" : "Test.png",
+  "applicationName": "app1",
+  "mediaType": "image/png" 
+}
+
+###
+GET http://localhost:4006/odata/v4/media-server/Media(7)/content
+Content-Type: image/png
+
+####
+GET http://localhost:4006/odata/v4/media-server/$metadata
+
+###
+GET http://localhost:4006/odata/v4/media-server/Media
+
+###
+PUT http://localhost:4006/odata/v4/media-server/Media(17)/content
+Content-Type: application/image
+
+< ./tempFiles/Test.png
+
+###
+GET http://localhost:4006/odata/v4/media-server/Media(9)/content

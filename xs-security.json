@@ -1,0 +1,10 @@
+{
+  "description": "Security profile of called application",
+  "scopes"     : [ { 
+      "name": "uaa.user",
+      "description": "UAA"
+  }
+],
+ "attributes" : [  ], 
+ "role-templates": [ ]
+}
